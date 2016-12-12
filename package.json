@@ -1,0 +1,12 @@
+{
+  "name": "mgis-plugin-geometry-converter",
+  "version": "1.0.0",
+  "description": "Convert layer's geometry type and features' coordinates from type to type.",
+  "keywords": [
+    "mgis",
+    "plugin",
+    "geometry-converter"
+  ],
+  "license": "ISC",
+  "dependencies": {}
+}

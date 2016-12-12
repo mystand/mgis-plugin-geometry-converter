@@ -4,7 +4,9 @@ export function getGTypeFromBuildOptions(options) {
   const { values, fieldPath, directories: { layers } } = options
   const sourceLayerKeyFieldPath = [fieldPath[0], fieldPath[1], 'sourceLayerKey']
   const sourceLayerKeyValue = R.path(sourceLayerKeyFieldPath, values)
+  const typeFieldPath = [fieldPath[0], fieldPath[1], 'type']
+  const typeValue = R.path(typeFieldPath, values)
 
   if (R.isNil(sourceLayerKeyValue)) return []
-  return R.find(x => x.key === sourceLayerKeyValue, layers).geometry_type
+  return { layer: R.find(x => x.key === sourceLayerKeyValue, layers), geometry_type: typeValue }
 }

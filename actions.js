@@ -12,12 +12,12 @@ export const hideConvertWarning = () => ({
   type: HIDE_CONVERT_WARNING
 })
 
-export const convertRequest = layer => ({
+export const convertRequest = (layer, geometry_type) => ({
   type: CONVERT_REQUEST,
-  layer
+  layer,
+  geometry_type
 })
 
-export const convertSuccess = object => ({
-  type: CONVERT_SUCCESS,
-  object
+export const convertSuccess = () => ({
+  type: CONVERT_SUCCESS
 })

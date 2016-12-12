@@ -1,5 +1,5 @@
 // import Dashboard from '../components/dashboard/Dashboard'
-import FieldsInput from '../components/fields-input/FieldsInput'
+import Converter from '../components/fields-input/Converter'
 
 const geometryTypes = [
   { value: 'Point', label: 'Точка' },
@@ -17,7 +17,7 @@ export default {
         fields: [
           { key: 'sourceLayerKey', label: 'Слой', type: 'select', options: 'layers' },
           { key: 'type', label: 'Тип геометрии', type: 'select', inputOptions: { options: geometryTypes } },
-          { key: 'converter', label: 'Конвертер', type: FieldsInput }
+          { key: 'converter', label: 'Конвертер', type: Converter }
         ]
       }
     }],

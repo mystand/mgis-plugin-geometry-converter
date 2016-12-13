@@ -1,5 +1,7 @@
 // import Dashboard from '../components/dashboard/Dashboard'
 import Converter from '../components/fields-input/Converter'
+import saga from '../saga'
+import reducer from '../reducer'
 
 const geometryTypes = [
   { value: 'Point', label: 'Точка' },
@@ -7,21 +9,14 @@ const geometryTypes = [
   { value: 'Line', label: 'Линия' }
 ]
 export default {
-  name: 'Конвертер',
-  options: [
-    {
-      key: 'items',
-      label: 'Конвертация',
-      type: 'array',
-      item: {
-        fields: [
-          { key: 'sourceLayerKey', label: 'Слой', type: 'select', options: 'layers' },
-          { key: 'type', label: 'Тип геометрии', type: 'select', inputOptions: { options: geometryTypes } },
-          { key: 'converter', label: 'Конвертер', type: Converter }
-        ]
-      }
-    }],
-  connects: {
-    components: []
-  }
+  form: {
+    fields: [
+      { key: 'sourceLayerKey', label: 'Слой', type: 'select', options: 'layers' },
+      { key: 'type', label: 'Тип геометрии', type: 'select', inputOptions: { options: geometryTypes } },
+      { key: 'converter', label: 'Конвертер', type: Converter }
+    ]
+  },
+  components: [],
+  saga,
+  reducer
 }

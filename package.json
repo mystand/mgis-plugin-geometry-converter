@@ -8,5 +8,7 @@
     "geometry-converter"
   ],
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "@turf/turf": "^3.7.0"
+  }
 }

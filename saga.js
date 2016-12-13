@@ -8,9 +8,8 @@ import Api from './api'
 
 function* conversionRequest(payload) {
   const { layer, geometry_type } = payload
-  console.log(layer, geometry_type)
-  yield call(Api.conversion.point, layer)
-  yield put(actions.conversionSuccess())
+  yield call(Api.conversion.create, payload)
+  // yield put(actions.conversionSuccess())
 }
 
 export default function* saga() {

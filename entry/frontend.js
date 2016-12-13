@@ -4,9 +4,9 @@ import saga from '../saga'
 import reducer from '../reducer'
 
 const geometryTypes = [
-  { value: 'Point', label: 'Точка' },
-  { value: 'Polygon', label: 'Полигон' },
-  { value: 'Line', label: 'Линия' }
+  { value: 'point', label: 'Точка' },
+  { value: 'polygon', label: 'Полигон' },
+  { value: 'line', label: 'Линия' }
 ]
 export default {
   form: {

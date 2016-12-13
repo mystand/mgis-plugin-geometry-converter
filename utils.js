@@ -1,7 +1,7 @@
 import R from 'ramda'
 
 export function getGTypeFromBuildOptions(options) {
-  console.log(options)
+  // console.log(options)
   const { values, directories: { layers } } = options
   const layerKey = values.sourceLayerKey
   // const { values, fieldPath, directories: { layers } } = options

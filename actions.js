@@ -21,3 +21,8 @@ export const convertRequest = (layer, geometry_type) => ({
 export const convertSuccess = () => ({
   type: CONVERT_SUCCESS
 })
+
+export const convertFailure = (error) => ({
+  type: CONVERT_FAILURE,
+  error
+})

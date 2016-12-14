@@ -7,9 +7,12 @@ import * as actions from './actions'
 import Api from './api'
 
 function* conversionRequest(payload) {
-  const { layer, geometry_type } = payload
-  yield call(Api.conversion.create, payload)
-  // yield put(actions.conversionSuccess())
+  try {
+    yield call(Api.conversion.create, payload)
+    yield put(actions.convertSuccess())
+  } catch (e) {
+    yield put(actions.convertFailure(e))
+  }
 }
 
 export default function* saga() {

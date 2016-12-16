@@ -8,7 +8,7 @@ import Api from './api'
 
 function* conversionRequest(payload) {
   try {
-    yield call(Api.conversion.create, payload)
+    yield call(Api.conversion.update, payload)
     yield put(actions.convertSuccess())
   } catch (e) {
     yield put(actions.convertFailure(e))

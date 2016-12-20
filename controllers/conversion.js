@@ -33,7 +33,7 @@ export async function index(ctx) {
   ctx.body = await ctx.knex(TABLE_NAME)
 }
 
-export async function update(ctx) {
+export async function create(ctx) {
   const params = ctx.request.body
   const { layer, geometry_type } = params
   const layer_key = layer.key

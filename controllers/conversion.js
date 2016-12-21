@@ -29,10 +29,6 @@ const PICK_HANDLER = {
   })
 }
 
-export async function index(ctx) {
-  ctx.body = await ctx.knex(TABLE_NAME)
-}
-
 export async function create(ctx) {
   const params = ctx.request.body
   const { layer, geometry_type } = params
@@ -62,8 +58,4 @@ export async function create(ctx) {
 
   await Feature.updateAll(ctx.knex, updatedFeatures)
   ctx.body = { success: true }
-}
-
-function error(ctx, message) {
-  ctx.body = { success: false, message }
 }

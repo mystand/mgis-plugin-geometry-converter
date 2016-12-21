@@ -18,11 +18,12 @@ export const convertRequest = (layer, geometry_type) => ({
   geometry_type
 })
 
-export const convertSuccess = () => ({
-  type: CONVERT_SUCCESS
-})
+export const convertSuccess = () => {
+  window.location = '/admin/layers'
+  return { type: CONVERT_SUCCESS }
+}
 
-export const convertFailure = (error) => ({
+export const convertFailure = error => ({
   type: CONVERT_FAILURE,
   error
 })

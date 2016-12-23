@@ -11,6 +11,13 @@ const ACTUAL_TYPES = {
   line: 'LineString',
   point: 'Point'
 }
+
+const MIRROR_TYPES = {
+  Polygon: 'polygon',
+  LineString: 'line',
+  Point: 'point'
+}
+
 const PICK_HANDLER = {
   'polygon->point': feature => turf.centerOfMass(feature),
   'point->polygon': feature => turf.circle(turf.point(feature.geometry.coordinates), 10, 8, 'meters'),
@@ -31,9 +38,7 @@ const PICK_HANDLER = {
 
 export async function create(ctx) {
   const params = ctx.request.body
-  const { layer, geometry_type } = params
-  const layer_key = layer.key
-  const prevGeometryType = layer.geometry_type
+  const { geometry_type } = params
   // console.log(params)
   ctx.body = {}
   const featuresAsData = await ctx.knex.select(ctx.knex.raw(
@@ -52,7 +57,7 @@ export async function create(ctx) {
   const updatedFeatures = R.pipe(
     R.filter(x => x.geometry.type === ACTUAL_TYPES[prevGeometryType]),
     R.map(feature => R.assoc('geometry',
-      PICK_HANDLER[`${prevGeometryType}->${geometry_type}`](feature).geometry,
+      PICK_HANDLER[`${MIRROR_TYPES[feature.geometry.type]}->${geometry_type}`](feature).geometry,
       feature))
     )(features)
 

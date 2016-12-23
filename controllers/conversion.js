@@ -38,7 +38,8 @@ const PICK_HANDLER = {
 
 export async function create(ctx) {
   const params = ctx.request.body
-  const { geometry_type } = params
+  const { layer, geometry_type } = params
+  const layer_key = layer.key
   // console.log(params)
   ctx.body = {}
   const featuresAsData = await ctx.knex.select(ctx.knex.raw(
@@ -54,12 +55,9 @@ export async function create(ctx) {
     geometry: JSON.parse(feature.geometry)
   })
   )
-  const updatedFeatures = R.pipe(
-    R.filter(x => x.geometry.type === ACTUAL_TYPES[prevGeometryType]),
-    R.map(feature => R.assoc('geometry',
+  const updatedFeatures = R.map(feature => R.assoc('geometry',
       PICK_HANDLER[`${MIRROR_TYPES[feature.geometry.type]}->${geometry_type}`](feature).geometry,
-      feature))
-    )(features)
+      feature), features)
 
   await Feature.updateAll(ctx.knex, updatedFeatures)
   ctx.body = { success: true }

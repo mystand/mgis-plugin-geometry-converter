@@ -16,7 +16,7 @@
 4 verbose stack     at tryToString (fs.js:414:3)
 4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:401:12)
 5 verbose cwd /home/mystand/Documents/mgis/plugins/geometry-converter
-6 error Linux 4.4.0-53-generic
+6 error Linux 4.4.0-57-generic
 7 error argv "/home/mystand/.nvm/versions/node/v5.4.1/bin/node" "/home/mystand/.nvm/versions/node/v5.4.1/bin/npm" "start"
 8 error node v5.4.1
 9 error npm  v3.3.12
